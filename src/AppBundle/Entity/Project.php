@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Helper\SshKeyHelper;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,9 +53,19 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="text", nullable=false)
+     * @ORM\Column(name="type", type="string", nullable=false)
      */
     private $type;
+
+    /**
+     * Project constructor.
+     */
+    public function __construct()
+    {
+        $keys = SshKeyHelper::generate();
+        $this->setGitPrivateKey($keys['private_key']);
+        $this->setGitPublicKey($keys['public_key']);
+    }
 
     /**
      * Get id

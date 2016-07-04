@@ -13,6 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:Dashboard:index.html.twig');
+        $projects = $this->get('project_handler')->getProjects();
+        return $this->render('AppBundle:Dashboard:index.html.twig', array('projects' => $projects));
     }
 }
