@@ -58,6 +58,13 @@ class Project
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="default_branch", type="string", nullable=false)
+     */
+    private $defaultBranch;
+
+    /**
      * Project constructor.
      */
     public function __construct()
@@ -65,6 +72,7 @@ class Project
         $keys = SshKeyHelper::generate();
         $this->setGitPrivateKey($keys['private_key']);
         $this->setGitPublicKey($keys['public_key']);
+        $this->setDefaultBranch('master');
     }
 
     /**
@@ -195,5 +203,29 @@ class Project
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set defaultBranch
+     *
+     * @param string $defaultBranch
+     *
+     * @return Project
+     */
+    public function setDefaultBranch($defaultBranch)
+    {
+        $this->defaultBranch = $defaultBranch;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultBranch
+     *
+     * @return string
+     */
+    public function getDefaultBranch()
+    {
+        return $this->defaultBranch;
     }
 }

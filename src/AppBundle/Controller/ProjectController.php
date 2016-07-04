@@ -6,6 +6,7 @@ use AppBundle\Entity\Project;
 use AppBundle\Form\ProjectForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -30,7 +31,12 @@ class ProjectController extends Controller
             10
         );
 
-        return $this->render('AppBundle:Project:builds.html.twig', array('pagination' => $pagination));
+        return $this->render('AppBundle:Project:builds.html.twig',
+            array(
+                'pagination' => $pagination,
+                'project' => $project
+            )
+        );
     }
 
     /**
@@ -73,6 +79,18 @@ class ProjectController extends Controller
             'project' => $project,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/create-build/{id}", name="create_build")
+     *
+     * @ParamConverter("post", class="AppBundle:Project")
+     */
+    public function createBuildAction(Request $request, Project $project)
+    {
+        $build = $this->get('project_handler')->createBuild($project);
+
+        return new RedirectResponse($this->generateUrl('build_show', array('id' => $build->getId())));
     }
 
 }

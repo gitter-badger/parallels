@@ -2,6 +2,7 @@
 
 namespace AppBundle\Handler;
 
+use AppBundle\Entity\Build;
 use AppBundle\Entity\Project;
 use Doctrine\ORM\EntityManager;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -43,5 +44,15 @@ class ProjectHandler
         $this->em->flush();
 
         return $project;
+    }
+
+    public function createBuild(Project $project)
+    {
+        $build = new Build();
+        $build->setProject($project);
+
+        $this->em->persist($build);
+        $this->em->flush();
+        return $build;
     }
 }

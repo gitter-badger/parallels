@@ -16,7 +16,8 @@ class ProjectForm extends AbstractType
             ->add('gitSshLink')
             ->add('gitPrivateKey', HiddenType::class)
             ->add('gitPublicKey', HiddenType::class)
-            ->add('type');
+            ->add('type')
+            ->add('defaultBranch');
     }
 
     public function getName()

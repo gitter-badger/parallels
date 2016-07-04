@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Project
@@ -24,14 +25,14 @@ class Build
     /**
      * @var string
      *
-     * @ORM\Column(name="start", type="datetime", length=255)
+     * @ORM\Column(name="start", type="datetime")
      */
     private $start;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="end", type="datetime", length=255)
+     * @ORM\Column(name="end", type="datetime", nullable=true)
      */
     private $end;
 
@@ -40,6 +41,14 @@ class Build
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
+
+    /**
+     * Build constructor.
+     */
+    public function __construct()
+    {
+        $this->setStart(new \DateTime());
+    }
 
     /**
      * Get id
