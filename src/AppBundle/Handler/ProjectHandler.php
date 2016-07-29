@@ -46,10 +46,19 @@ class ProjectHandler
         return $project;
     }
 
-    public function createBuild(Project $project)
+    public function createBuild(Project $project, $fromBranch, $toBranch)
     {
+        $max = $this->getBuildsQuery($project)
+            ->orderBy('b.buildId', 'desc')
+            ->getQuery()
+            ->setMaxResults(1)
+            ->getSingleResult();
+
         $build = new Build();
         $build->setProject($project);
+        $build->setFromBranch($fromBranch);
+        $build->setToBranch($toBranch);
+        $build->setBuildId($max->getBuildId() + 1);
 
         $this->em->persist($build);
         $this->em->flush();

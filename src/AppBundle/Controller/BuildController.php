@@ -20,7 +20,7 @@ class BuildController extends Controller
     /**
      * @Route("/show/{id}", name="build_show")
      *
-     * @ParamConverter("post", class="AppBundle:Build")
+     * @ParamConverter("build", class="AppBundle:Build")
      */
     public function buildsAction(Build $build)
     {

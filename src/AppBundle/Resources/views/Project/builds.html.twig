@@ -17,16 +17,24 @@
                             <tbody>
                             <tr>
                                 <th>#</th>
-                                <th>Task</th>
+                                <th>Build ID</th>
                                 <th>Progress</th>
-                                <th>Label</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Actions</th>
                             </tr>
                             {% for build in pagination %}
                                 <tr>
                                     <td>{{ build.id }}</td>
+                                    <td>{{ build.buildId }}</td>
+                                    <td>{{ build.progress }}%</td>
                                     <td>{{ build.start|date('Y-m-d H:i:s') }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ build.end|date('Y-m-d H:i:s') }}</td>
+                                    <td>
+                                        <a href="{{ path('build_show', {id: build.id}) }}">
+                                            Show
+                                        </a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

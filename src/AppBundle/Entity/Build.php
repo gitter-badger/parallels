@@ -23,6 +23,20 @@ class Build
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="build_id", type="integer")
+     */
+    private $buildId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="progress", type="integer")
+     */
+    private $progress;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="start", type="datetime")
@@ -37,6 +51,20 @@ class Build
     private $end;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="from_branch", type="string", nullable=false)
+     */
+    private $fromBranch;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="to_branch", type="string", nullable=false)
+     */
+    private $toBranch;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Project")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
@@ -48,6 +76,7 @@ class Build
     public function __construct()
     {
         $this->setStart(new \DateTime());
+        $this->progress = 0;
     }
 
     /**
@@ -130,5 +159,101 @@ class Build
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set buildId
+     *
+     * @param integer $buildId
+     *
+     * @return Build
+     */
+    public function setBuildId($buildId)
+    {
+        $this->buildId = $buildId;
+
+        return $this;
+    }
+
+    /**
+     * Get buildId
+     *
+     * @return integer
+     */
+    public function getBuildId()
+    {
+        return $this->buildId;
+    }
+
+    /**
+     * Set progress
+     *
+     * @param integer $progress
+     *
+     * @return Build
+     */
+    public function setProgress($progress)
+    {
+        $this->progress = $progress;
+
+        return $this;
+    }
+
+    /**
+     * Get progress
+     *
+     * @return integer
+     */
+    public function getProgress()
+    {
+        return $this->progress;
+    }
+
+    /**
+     * Set fromBranch
+     *
+     * @param string $fromBranch
+     *
+     * @return Build
+     */
+    public function setFromBranch($fromBranch)
+    {
+        $this->fromBranch = $fromBranch;
+
+        return $this;
+    }
+
+    /**
+     * Get fromBranch
+     *
+     * @return string
+     */
+    public function getFromBranch()
+    {
+        return $this->fromBranch;
+    }
+
+    /**
+     * Set toBranch
+     *
+     * @param string $toBranch
+     *
+     * @return Build
+     */
+    public function setToBranch($toBranch)
+    {
+        $this->toBranch = $toBranch;
+
+        return $this;
+    }
+
+    /**
+     * Get toBranch
+     *
+     * @return string
+     */
+    public function getToBranch()
+    {
+        return $this->toBranch;
     }
 }

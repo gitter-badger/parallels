@@ -53,9 +53,9 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="service", type="string", nullable=false)
      */
-    private $type;
+    private $service;
 
     /**
      * @var string
@@ -182,30 +182,6 @@ class Project
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Project
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set defaultBranch
      *
      * @param string $defaultBranch
@@ -227,5 +203,29 @@ class Project
     public function getDefaultBranch()
     {
         return $this->defaultBranch;
+    }
+
+    /**
+     * Set service
+     *
+     * @param string $service
+     *
+     * @return Project
+     */
+    public function setService($service)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return string
+     */
+    public function getService()
+    {
+        return $this->service;
     }
 }
