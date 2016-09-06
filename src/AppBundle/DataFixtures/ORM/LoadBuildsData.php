@@ -16,6 +16,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
                 'start' => new \DateTime('2016-01-01 12:00:00'),
                 'end' => new \DateTime('2016-01-01 12:15:00'),
                 'project' => $this->getReference('test_project'),
+                'fromBranch' => 'issue1',
+                'toBranch' => 'master',
                 'progress' => 98,
             ),
             array(
@@ -23,6 +25,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
                 'start' => new \DateTime('2016-01-01 13:00:00'),
                 'end' => new \DateTime('2016-01-01 13:15:00'),
                 'project' => $this->getReference('test_project'),
+                'fromBranch' => 'issue1',
+                'toBranch' => 'master',
                 'progress' => 100,
             ),
             array(
@@ -30,6 +34,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
                 'start' => new \DateTime('2016-01-02 12:00:00'),
                 'end' => new \DateTime('2016-01-02 12:15:00'),
                 'project' => $this->getReference('test_project'),
+                'fromBranch' => 'issue1',
+                'toBranch' => 'master',
                 'progress' => 100,
             ),
             array(
@@ -37,6 +43,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
                 'start' => new \DateTime('2016-01-02 13:00:00'),
                 'end' => new \DateTime('2016-01-02 13:15:00'),
                 'project' => $this->getReference('test_project'),
+                'fromBranch' => 'issue1',
+                'toBranch' => 'master',
                 'progress' => 100,
             ),
             array(
@@ -44,6 +52,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
                 'start' => new \DateTime('2016-01-02 14:00:00'),
                 'end' => new \DateTime('2016-01-02 14:15:00'),
                 'project' => $this->getReference('test_project'),
+                'fromBranch' => 'issue1',
+                'toBranch' => 'master',
                 'progress' => 100,
             ),
         );
@@ -55,6 +65,8 @@ class LoadBuildsData extends AbstractFixture implements OrderedFixtureInterface
             $build->setBuildId($buildData['buildId']);
             $build->setProject($buildData['project']);
             $build->setProgress($buildData['progress']);
+            $build->setFromBranch($buildData['fromBranch']);
+            $build->setToBranch($buildData['toBranch']);
 
             $manager->persist($build);
         }
