@@ -48,6 +48,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "platform": {
             "php": "5.5.9"

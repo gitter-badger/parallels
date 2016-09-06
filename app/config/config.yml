@@ -74,3 +74,8 @@ jms_di_extra:
         all_bundles: false
         bundles: [AppBundle]
         directories: ["%kernel.root_dir%/../src"]
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
